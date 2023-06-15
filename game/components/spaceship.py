@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from game.utils.constants import SPACESHIP, SCREEN_HEIGHT, SCREEN_WIDTH
+from game.components.bullets.bullet import Bullet
 
 class Spaceship(Sprite):
     X_POS = (SCREEN_WIDTH // 2) - 40
@@ -9,7 +10,6 @@ class Spaceship(Sprite):
     def __init__(self):
         # Se inicializa la clase Spaceship como una subclase de Sprite de Pygame para utilizar las características de sprite
         self.image = SPACESHIP
-
         # Se redimensiona la imagen de la nave espacial a un tamaño específico
         self.image = pygame.transform.scale(self.image, (40, 60))
 
@@ -17,6 +17,7 @@ class Spaceship(Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
+        self.type = 'player'
 
     def move_left(self):
         # Mueve la nave hacia la izquierda si no ha alcanzado el límite izquierdo
@@ -46,7 +47,11 @@ class Spaceship(Sprite):
         if self.rect.y < SCREEN_HEIGHT - 70:
             self.rect.y = self.rect.y + 10
 
-    def update(self, user_input):
+    def shoot(self, bullet_manager):
+            bullet = Bullet(self)
+            bullet_manager.add_bullet(bullet)
+
+    def update(self, user_input, game):
         # Actualiza la posición de la nave en función de la entrada del usuario
         if user_input[pygame.K_LEFT]:
             self.move_left()
@@ -56,6 +61,8 @@ class Spaceship(Sprite):
             self.move_up()
         elif user_input[pygame.K_DOWN]:
             self.move_down()
+        elif user_input[pygame.K_SPACE]:
+            self.shoot(game.bullet_manager)
 
     def draw(self, screen):
         # Dibuja la imagen de la nave espacial en la pantalla en su posición actual
