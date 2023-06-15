@@ -1,7 +1,10 @@
 import pygame
+
+
 from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_manager import EnemyManager
+from game.components.bullets.bullet_manager import BulletManager 
 
 class Game:
     def __init__(self):
@@ -16,6 +19,7 @@ class Game:
 
         self.player = Spaceship()
         self.enemy_manager = EnemyManager()
+        self.bullet_manager = BulletManager()
         self.x_pos_bg = 0
         self.y_pos_bg = 0
 
@@ -39,7 +43,8 @@ class Game:
         # Actualiza las entidades del juego
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
-        self.enemy_manager.update()
+        self.enemy_manager.update(self)
+        self.bullet_manager.update(self)
 
     def draw(self):
         # Dibuja los elementos del juego en la pantalla
@@ -49,6 +54,7 @@ class Game:
         self.draw_background()
         self.player.draw(self.screen)
         self.enemy_manager.draw(self.screen)
+        self.bullet_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
