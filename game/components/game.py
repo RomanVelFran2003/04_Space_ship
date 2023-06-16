@@ -33,14 +33,14 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
-            pygame.display.quit()
-            pygame.quit()
+        pygame.display.quit()
+        pygame.quit()
 
     def run(self):
         # Ejecuta el juego
         self.enemy_manager.reset()
         self.score = 0
-        
+
         self.playing = True
         while self.playing:
             self.events()

@@ -14,6 +14,7 @@ ICON = pygame.image.load(os.path.join(IMG_DIR, "Spaceship/spaceship.png"))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
+BG_MENU = pygame.image.load(os.path.join(IMG_DIR, 'Other/Menu.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
