@@ -47,9 +47,9 @@ class Spaceship(Sprite):
         if self.rect.y < SCREEN_HEIGHT - 70:
             self.rect.y = self.rect.y + 10
 
-    def shoot(self, bullet_manager):
+    def shoot(self, game):
             bullet = Bullet(self)
-            bullet_manager.add_bullet(bullet)
+            game.bullet_manager.add_bullet(bullet)
 
     def update(self, user_input, game):
         # Actualiza la posición de la nave en función de la entrada del usuario
@@ -62,7 +62,7 @@ class Spaceship(Sprite):
         elif user_input[pygame.K_DOWN]:
             self.move_down()
         elif user_input[pygame.K_SPACE]:
-            self.shoot(game.bullet_manager)
+            self.shoot(game)
 
     def draw(self, screen):
         # Dibuja la imagen de la nave espacial en la pantalla en su posición actual
