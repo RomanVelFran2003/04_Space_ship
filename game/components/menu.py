@@ -11,7 +11,7 @@ class Menu:
         self.y_pos_bg = 0
         screen.fill((255,255,255))
         self.font = pygame.font.Font(FONT_STYLE, 30)
-        self.text = self.font.render(message, True, (0,0,0))
+        self.text = self.font.render(message, True, (255,255,255))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT)
 
@@ -33,7 +33,7 @@ class Menu:
         screen.blit(self.text, self.text_rect)
 
     def update_message(self, message):
-        self.text = self.font.render(message,True,(0,0,0))
+        self.text = self.font.render(message,True,(255,255,255))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT)
 

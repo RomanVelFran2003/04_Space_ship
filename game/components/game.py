@@ -25,7 +25,9 @@ class Game:
         self.y_pos_bg = 0
         self.running = False
         self.score = 0
+        self.high_score = 0
         self.death_count = 0
+        self.total_death = 0
         self.menu = Menu('Press any key to start...', self.screen)
 
     def execute(self):
@@ -93,7 +95,12 @@ class Game:
         if self.death_count == 0:
             self.menu.draw(self.screen)
         else:
-            self.menu.update_message('New message')
+            if self.high_score < self.score:
+                self.high_score = self.score
+            else:
+                self.high_score = self.high_score 
+
+            self.menu.update_message(f'GAME OVER  Your score: {self.score}  Your Highest score: {self.high_score}  Total deaths: {self.total_death}')
             self.menu.draw(self.screen)
         
         icon = pygame.transform.scale(ICON, (80,120))
