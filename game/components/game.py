@@ -45,8 +45,7 @@ class Game:
 
     def run(self):
         # Ejecuta el juego
-        self.reset()
-        
+        self.reset()        
 
         self.playing = True
         while self.playing:
@@ -107,7 +106,7 @@ class Game:
             self.menu.draw(self.screen, 'Press any key to start...')
         else:
             self.update_highest_score()
-            
+
             self.menu.draw(self.screen, 'Game OVER, Press any key to restart')
             self.menu.draw(self.screen, f'Your score : {self.score.count}', half_screen_widht, 350, )
             self.menu.draw(self.screen, f'Your highest score : {self.highest_score.count}', half_screen_widht, 400, )
@@ -122,10 +121,3 @@ class Game:
     def update_highest_score(self):
         if self.score.count > self.highest_score.count:
             self.highest_score.set_count(self.score.count)
-
-    def draw_score(self):
-        font = pygame.font.Font(FONT_STYLE, 30)
-        text = font.render(f'Score:  {self.score}', True, (255,255,255))
-        text_rect = text.get_rect()
-        text_rect.center = (1000, 50)
-        self.screen.blit(text, text_rect)

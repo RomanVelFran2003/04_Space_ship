@@ -26,17 +26,17 @@ class Menu:
         self.handle_events_on_menu(game)
     
     def draw(self, screen, message, x = HALF_SCREEN_WIDTH, y = HALF_SCREEN_HEIGHT, color = (255,255,255)):
-        self.draw_background()
-        text = self.font.render(message, True, (255,255,255))
+        
+        text = self.font.render(message, True, color)
         text_rect = text.get_rect()
         text_rect.center = (x, y)        
         screen.blit(text, text_rect)
 
     def reset_screen_color(self, screen):
-        screen.fill((255,255,255))
+        self.draw_background()
     
     def draw_background(self):
-        # Dibuja el fondo de pantalla y lo desplaza verticalmente
+        # Dibuja el fondo de pantalla
         image = pygame.transform.scale(BG_MENU, (SCREEN_WIDTH, SCREEN_HEIGHT))
         image_height = image.get_height()
         self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg))
