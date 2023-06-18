@@ -1,5 +1,6 @@
 import pygame
-from game.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH, BG_MENU
+from game.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH, BG_MENU, IMG_DIR
+import os
 
 class Menu:
     HALF_SCREEN_HEIGHT = SCREEN_HEIGHT // 2
@@ -21,7 +22,6 @@ class Menu:
                 game.run()
 
     def update(self,game):
-
         pygame.display.update()
         self.handle_events_on_menu(game)
     
@@ -41,3 +41,11 @@ class Menu:
         image_height = image.get_height()
         self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg))
         self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg - image_height))
+
+    def music_menu(self):
+        pygame.mixer.music.load(os.path.join(IMG_DIR,"Sounds\menu.mp3"))
+        pygame.mixer.music.play(1)
+
+    def sfx_game_over(self):
+        pygame.mixer.music.load(os.path.join(IMG_DIR,"Sounds\gameover.mp3"))
+        pygame.mixer.music.play(1)
