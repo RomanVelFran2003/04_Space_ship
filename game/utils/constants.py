@@ -16,7 +16,8 @@ EXPLOSION = pygame.image.load(os.path.join(IMG_DIR, 'Other/explosion.png'))
 BONUS = pygame.image.load(os.path.join(IMG_DIR, 'Other/bonus.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-BG_MENU = pygame.image.load(os.path.join(IMG_DIR, 'Other/Menu.png'))
+BG_MENU = pygame.image.load(os.path.join(IMG_DIR, 'Other/background_menu.jpg'))
+BG_GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/background_game_over.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 

@@ -1,5 +1,5 @@
 import pygame
-from game.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH, BG_MENU
+from game.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH, BG_MENU,BG_GAME_OVER
 
 class Menu:
     HALF_SCREEN_HEIGHT = SCREEN_HEIGHT // 2
@@ -26,19 +26,24 @@ class Menu:
         pygame.display.update()
         self.handle_events_on_menu(game)
     
-    def draw(self, screen, message, x = HALF_SCREEN_WIDTH, y = HALF_SCREEN_HEIGHT, color = (255,255,255)):
+    def draw(self, screen, message, x = HALF_SCREEN_WIDTH, y = HALF_SCREEN_HEIGHT, color = (0,0,0)):
         
         text = self.font.render(message, True, color)
         text_rect = text.get_rect()
         text_rect.center = (x, y)        
         screen.blit(text, text_rect)
 
-    def reset_screen_color(self, screen):
-        self.draw_background()
     
-    def draw_background(self):
+    def draw_background_menu(self, screen):
         # Dibuja el fondo de pantalla
         image = pygame.transform.scale(BG_MENU, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        image_height = image.get_height()
+        self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg))
+        self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg - image_height))
+
+    def draw_background_gameover(self, screen):
+        # Dibuja el fondo de pantalla
+        image = pygame.transform.scale(BG_GAME_OVER, (SCREEN_WIDTH, SCREEN_HEIGHT))
         image_height = image.get_height()
         self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg))
         self.screen.blit(image, (self.x_pos_bg, self.y_pos_bg - image_height))

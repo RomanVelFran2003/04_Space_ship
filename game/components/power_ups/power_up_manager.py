@@ -4,7 +4,7 @@ import random
 from game.components.power_ups.shield import Shield
 from game.components.power_ups.explosion import Explosion
 from game.components.power_ups.bonus import Bonus
-from game.utils.constants import SPACESHIP_SHIELD, SPACESHIP, SHIELD_TYPE, BONUS_TYPE,SPACESHIP_BONUS,EXPLOSION_TYPE,SPACESHIP_EXPLOSION,SFXPOWERUPEXPLOSION,SFXMOREPOINTS
+from game.utils.constants import SPACESHIP_SHIELD, SPACESHIP, SHIELD_TYPE, BONUS_TYPE,SPACESHIP_BONUS,EXPLOSION_TYPE,SPACESHIP_EXPLOSION,SFXPOWERUPEXPLOSION,SFXMOREPOINTS,DEFAULT_TYPE
 
 class PowerUpManager:
     def __init__(self):
@@ -50,11 +50,13 @@ class PowerUpManager:
                     power_up.activate(game)
                     self.power_ups.remove(power_up)
 
+
     def draw(self, screen):
         for power_up in self.power_ups:
             power_up.draw(screen)
 
-    def reset(self):
+    def reset(self,game):
         now = pygame.time.get_ticks()
         self.power_ups = []
+        game.player.power_up_type = DEFAULT_TYPE
         self.when_appears = random.randint(5000, 10000)

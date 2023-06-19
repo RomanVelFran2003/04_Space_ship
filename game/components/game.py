@@ -60,7 +60,7 @@ class Game:
         self.player.reset()
         self.bullet_manager.reset()
         self.enemy_manager.reset()
-        self.power_up_manager.reset()
+        self.power_up_manager.reset(self)
 
     def events(self):
         # Maneja los eventos del juego, como cerrar la ventana
@@ -125,19 +125,20 @@ class Game:
         self.y_pos_bg = self.y_pos_bg + self.game_speed
 
     def show_menu(self):
-        self.menu.reset_screen_color(self.screen)
+        
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_widht = SCREEN_WIDTH // 2
 
         if self.death_count.count == 0:
+            self.menu.draw_background_menu(self.screen)
             self.menu.draw(self.screen, 'Press any key to start...')
         else:
+            self.menu.draw_background_gameover(self.screen)
             self.update_highest_score()
-
-            self.menu.draw(self.screen, 'Game OVER, Press any key to restart')
-            self.menu.draw(self.screen, f'Your score : {self.score.count}', half_screen_widht, 350, )
-            self.menu.draw(self.screen, f'Your highest score : {self.highest_score.count}', half_screen_widht, 400, )
-            self.menu.draw(self.screen, f'Total death : {self.death_count.count}', half_screen_widht, 450, )
+            self.menu.draw(self.screen, 'Game OVER, Press any key to restart', half_screen_widht,350)
+            self.menu.draw(self.screen, f'Your score : {self.score.count}', half_screen_widht, 400, )
+            self.menu.draw(self.screen, f'Your highest score : {self.highest_score.count}', half_screen_widht, 450, )
+            self.menu.draw(self.screen, f'Total death : {self.death_count.count}', half_screen_widht, 500, )
 
         
         icon = pygame.transform.scale(ICON, (80,120))
