@@ -18,7 +18,7 @@ class Menu:
             if event.type == pygame.QUIT:
                 game.running = False
                 game.playing = False
-            if user_input[pygame.K_SPACE]:
+            if user_input[pygame.K_TAB]:
                 game.run()
 
     def update(self,game):

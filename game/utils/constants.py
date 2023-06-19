@@ -46,5 +46,7 @@ SFXDEATHPLAYER = os.path.join(IMG_DIR, "Sounds/sfxDeathPlayer.wav")
 SFXPOWERUPEXPLOSION = os.path.join(IMG_DIR, "Sounds/sfxPowerupExplosion.wav")
 SFXMOREPOINTS = os.path.join(IMG_DIR, "Sounds/sfxMorePoints.wav")
 
+MUSICBG = os.path.join(IMG_DIR, "Sounds/musicBg.wav")
+
 
 FONT_STYLE = 'freesansbold.ttf'

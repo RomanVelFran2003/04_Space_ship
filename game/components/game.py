@@ -1,6 +1,6 @@
 import pygame
 
-from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, FONT_STYLE, EXPLOSION_TYPE, BONUS_TYPE
+from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, FONT_STYLE, EXPLOSION_TYPE, BONUS_TYPE,MUSICBG
 
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_manager import EnemyManager
@@ -41,14 +41,17 @@ class Game:
         self.running = True
         while self.running:
             if not self.playing:
+                pygame.mixer.music.load(MUSICBG)
+                pygame.mixer.music.play(-1)
                 self.show_menu()
+        
         pygame.display.quit()
         pygame.quit()
 
     def run(self):
         # Ejecuta el juego
-        self.reset()        
-
+        self.reset()
+        
         self.playing = True
         while self.playing:
             self.events()
@@ -131,11 +134,11 @@ class Game:
 
         if self.death_count.count == 0:
             self.menu.draw_background_menu(self.screen)
-            self.menu.draw(self.screen, 'Press any key to start...')
+            self.menu.draw(self.screen, 'Press TAB to start...')
         else:
             self.menu.draw_background_gameover(self.screen)
             self.update_highest_score()
-            self.menu.draw(self.screen, 'Game OVER, Press any key to restart', half_screen_widht,350)
+            self.menu.draw(self.screen, 'Game OVER, Press TAB to restart', half_screen_widht,350)
             self.menu.draw(self.screen, f'Your score : {self.score.count}', half_screen_widht, 400, )
             self.menu.draw(self.screen, f'Your highest score : {self.highest_score.count}', half_screen_widht, 450, )
             self.menu.draw(self.screen, f'Total death : {self.death_count.count}', half_screen_widht, 500, )

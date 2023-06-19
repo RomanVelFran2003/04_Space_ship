@@ -30,6 +30,7 @@ class BulletManager:
                     game.playing = False
                     pygame.time.delay(100)
                     game.death_count.update()
+                    
                 break
 
 
