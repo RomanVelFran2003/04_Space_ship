@@ -1,7 +1,6 @@
 import pygame
-import os
 
-from game.utils.constants import SHIELD_TYPE, IMG_DIR
+from game.utils.constants import SHIELD_TYPE
 
 class BulletManager:
     def __init__(self):
@@ -15,8 +14,6 @@ class BulletManager:
             for enemy in game.enemy_manager.enemies:
                 if bullet.rect.colliderect(enemy.rect) and bullet.owner != 'enemy':
                     game.enemy_manager.enemies.remove(enemy)
-                    pygame.mixer.music.load(os.path.join(IMG_DIR,"Sounds\enemydeath.mp3"))
-                    pygame.mixer.music.play(1)
                     self.bullets.remove(bullet)
                     game.score.update()
                     
@@ -26,7 +23,7 @@ class BulletManager:
                 self.enemy_bullets.remove(bullet)
                 if game.player.power_up_type != SHIELD_TYPE:
                     game.playing = False
-                    pygame.time.delay(1000)
+                    pygame.time.delay(100)
                     game.death_count.update()
                 break
 
@@ -39,7 +36,7 @@ class BulletManager:
             bullet.draw(screen)
 
     def add_bullet(self, bullet):
-        if bullet.owner == 'enemy':
+        if bullet.owner == 'enemy' and len(self.enemy_bullets) < 1:
             self.enemy_bullets.append(bullet)
         if bullet.owner == 'player' and len(self.bullets) < 3:
             self.bullets.append(bullet)
