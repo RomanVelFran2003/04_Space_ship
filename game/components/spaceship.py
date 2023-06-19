@@ -53,6 +53,7 @@ class Spaceship(Sprite):
     def shoot(self, game):
             bullet = Bullet(self)
             game.bullet_manager.add_bullet(bullet)
+            
 
     def update(self, user_input, game):
         # Actualiza la posición de la nave en función de la entrada del usuario

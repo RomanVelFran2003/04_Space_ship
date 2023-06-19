@@ -30,4 +30,14 @@ ENEMY_1 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_1.png"))
 ENEMY_2 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_2.png"))
 ENEMY_3 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_3.png"))
 
+#SFX Sounds
+
+SFXSHOOT = os.path.join(IMG_DIR, "Sounds/sfxShootPlayer.wav")
+SFXSHOOTENEMY = os.path.join(IMG_DIR, "Sounds/sfxShootEnemy.wav")
+SFXEXPLOSIONENEMY = os.path.join(IMG_DIR, "Sounds/sfxExplosionEnemy.wav")
+SFXDEATHPLAYER = os.path.join(IMG_DIR, "Sounds/sfxDeathPlayer.wav")
+SFXPOWERUPEXPLOSION = os.path.join(IMG_DIR, "Sounds/sfxPowerupExplosion.wav")
+SFXMOREPOINTS = os.path.join(IMG_DIR, "Sounds/sfxMorePoints.wav")
+
+
 FONT_STYLE = 'freesansbold.ttf'

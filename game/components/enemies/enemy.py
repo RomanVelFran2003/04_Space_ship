@@ -59,6 +59,7 @@ class Enemy(Sprite):
         if round_time <= 0:
             bullet = Bullet(self)
             bullet_manager.add_bullet(bullet)
+            
             self.shoot_num += 1
             self.shooting_time = pygame.time.get_ticks()+2000
 
