@@ -4,7 +4,7 @@ import random
 from game.components.power_ups.shield import Shield
 from game.components.power_ups.explosion import Explosion
 from game.components.power_ups.bonus import Bonus
-from game.utils.constants import SPACESHIP_SHIELD, SPACESHIP, SHIELD_TYPE, BONUS_TYPE,SPACESHIP_BONUS,EXPLOSION_TYPE,SPACESHIP_EXPLOSION
+from game.utils.constants import SPACESHIP_SHIELD, SPACESHIP, SHIELD_TYPE, BONUS_TYPE,SPACESHIP_BONUS,EXPLOSION_TYPE,SPACESHIP_EXPLOSION,SFXPOWERUPEXPLOSION,SFXMOREPOINTS
 
 class PowerUpManager:
     def __init__(self):
@@ -33,14 +33,20 @@ class PowerUpManager:
                 game.player.has_power_up = True
                 game.player.power_time_up = power_up.start_time + (self.duration * 1000)
                 if isinstance(power_up, Shield):
+                    sfx_sound_shield = pygame.mixer.Sound(SFXMOREPOINTS)
+                    pygame.mixer.Sound.play(sfx_sound_shield)
                     power_up.activate(game)
                     self.power_ups.remove(power_up)
 
                 elif isinstance(power_up, Bonus):
+                    sfx_sound_bonus = pygame.mixer.Sound(SFXMOREPOINTS)
+                    pygame.mixer.Sound.play(sfx_sound_bonus)
                     power_up.activate(game)
                     self.power_ups.remove(power_up)
 
                 elif isinstance(power_up, Explosion):
+                    sfx_sound_explosion = pygame.mixer.Sound(SFXPOWERUPEXPLOSION)
+                    pygame.mixer.Sound.play(sfx_sound_explosion)
                     power_up.activate(game)
                     self.power_ups.remove(power_up)
 
