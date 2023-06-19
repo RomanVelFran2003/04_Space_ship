@@ -80,6 +80,7 @@ class Game:
         self.power_up_manager.update(self)
         self.power_up_manager.draw(self.screen)
         self.draw_power_up_time()
+        
 
     def draw(self):
         # Dibuja los elementos del juego en la pantalla
