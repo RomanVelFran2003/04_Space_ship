@@ -10,7 +10,7 @@ class Counter:
         self.count +=1
 
     def bonus(self):
-        self.count += 0.5
+        self.count += 1
 
     def draw(self, screen):
         font = pygame.font.Font(FONT_STYLE, 30)
