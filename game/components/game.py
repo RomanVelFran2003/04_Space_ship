@@ -41,8 +41,7 @@ class Game:
         self.running = True
         while self.running:
             if not self.playing:
-                pygame.mixer.music.load(MUSICBG)
-                pygame.mixer.music.play(-1)
+                
                 self.show_menu()
         
         pygame.display.quit()
@@ -51,7 +50,8 @@ class Game:
     def run(self):
         # Ejecuta el juego
         self.reset()
-        
+        pygame.mixer.music.load(MUSICBG)
+        pygame.mixer.music.play(-1)
         self.playing = True
         while self.playing:
             self.events()
@@ -138,7 +138,9 @@ class Game:
         else:
             self.menu.draw_background_gameover(self.screen)
             self.update_highest_score()
-            self.menu.draw(self.screen, 'Game OVER, Press TAB to restart', half_screen_widht,350)
+            pygame.mixer.music.load(MUSICBG)
+            pygame.mixer.music.stop()
+            self.menu.draw(self.screen, 'Press TAB to restart', half_screen_widht,350)
             self.menu.draw(self.screen, f'Your score : {self.score.count}', half_screen_widht, 400, )
             self.menu.draw(self.screen, f'Your highest score : {self.highest_score.count}', half_screen_widht, 450, )
             self.menu.draw(self.screen, f'Total death : {self.death_count.count}', half_screen_widht, 500, )

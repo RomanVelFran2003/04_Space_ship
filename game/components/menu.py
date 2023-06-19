@@ -26,7 +26,7 @@ class Menu:
         pygame.display.update()
         self.handle_events_on_menu(game)
     
-    def draw(self, screen, message, x = HALF_SCREEN_WIDTH, y = HALF_SCREEN_HEIGHT, color = (0,0,0)):
+    def draw(self, screen, message, x = HALF_SCREEN_WIDTH, y = HALF_SCREEN_HEIGHT, color = (255,255,255)):
         
         text = self.font.render(message, True, color)
         text_rect = text.get_rect()
