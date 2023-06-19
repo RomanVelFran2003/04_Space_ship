@@ -13,11 +13,12 @@ class Menu:
         self.font = pygame.font.Font(FONT_STYLE, 30)
 
     def  handle_events_on_menu(self, game):
+        user_input = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game.running = False
                 game.playing = False
-            if event.type == pygame.KEYDOWN:
+            if user_input[pygame.K_SPACE]:
                 game.run()
 
     def update(self,game):
