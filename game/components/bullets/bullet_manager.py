@@ -42,9 +42,10 @@ class BulletManager:
 
     def add_bullet(self, bullet):
         if bullet.owner == 'enemy':
-            self.enemy_bullets.append(bullet)
-            sfx_sound = pygame.mixer.Sound(SFXSHOOTENEMY)
-            pygame.mixer.Sound.play(sfx_sound)
+            
+                self.enemy_bullets.append(bullet)
+                sfx_sound = pygame.mixer.Sound(SFXSHOOTENEMY)
+                pygame.mixer.Sound.play(sfx_sound)
         if bullet.owner == 'player'and len(self.bullets) < 1:
             self.bullets.append(bullet)
             sfx_sound = pygame.mixer.Sound(SFXSHOOT)

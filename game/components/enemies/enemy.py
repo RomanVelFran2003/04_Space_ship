@@ -2,7 +2,7 @@ import pygame
 import random
 
 from pygame.sprite import Sprite
-from game.utils.constants import ENEMY_1, ENEMY_2, ENEMY_3, SCREEN_HEIGHT, SCREEN_WIDTH
+from game.utils.constants import ENEMY_1, ENEMY_2, ENEMY_3, SCREEN_HEIGHT, SCREEN_WIDTH,SFXSHOOTENEMY, EXPLOSION_TYPE
 from game.components.bullets.bullet import Bullet
 
 class Enemy(Sprite):
@@ -41,7 +41,8 @@ class Enemy(Sprite):
 
     def update(self, ships, game):
         self.rect.y += self.speed_y
-        self.shoot(game.bullet_manager)
+        if game.player.power_up_type != EXPLOSION_TYPE:
+            self.shoot(game.bullet_manager)
 
         if self.movement_x == 'left':
             self.rect.x -= self.speed_x
@@ -54,12 +55,12 @@ class Enemy(Sprite):
             ships.remove(self)
     
     def shoot(self, bullet_manager):
-        current_time = pygame.time.get_ticks()
         round_time = round((self.shooting_time - pygame.time.get_ticks())/1000)
         if round_time <= 0:
             bullet = Bullet(self)
             bullet_manager.add_bullet(bullet)
-            
+            sfx_sound = pygame.mixer.Sound(SFXSHOOTENEMY)
+            pygame.mixer.Sound.play(sfx_sound)
             self.shoot_num += 1
             self.shooting_time = pygame.time.get_ticks()+2000
 
